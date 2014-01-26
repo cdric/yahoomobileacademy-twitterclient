@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Twitter Client</string>
+
+    <string name="action_compose">Compose a tweet</string>
+    <string name="action_refresh">Refresh the timeline</string>
+
+    <string name="login_label">Log in</string>
+    
+    <string name="title_activity_timeline"></string>
+    <string name="title_activity_compose">Compose Tweet</string>
+    
+    <string name="btnCancel">Cancel</string>
+    <string name="btnTweet">Tweet</string>
+    
+    <string name="compose_tweet">Enter your tweet</string>
+    <string name="count_char_left">140 character(s) left</string>
+
+</resources>
