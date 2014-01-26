@@ -21,4 +21,4 @@ Additional work done
  - Better code encapsulation than in previous assignments
  - When a tweet is composed and the timeline is shown again, refresh the timeline to include any new recent tweets
  - Add the Twitter handle of the user in the action bar of the Timeline activity
- - Provide ability to add new tweets either at the top or the bottom of an existing timeline
+ - Update behavior of the app by not performing network related operation when network connectivity is not available to better usability

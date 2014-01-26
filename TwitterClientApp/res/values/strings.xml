@@ -16,5 +16,10 @@
     
     <string name="compose_tweet">Enter your tweet</string>
     <string name="count_char_left">140 character(s) left</string>
-
+    <string name="timeline_refresh">Refreshing your timeline...</string>
+    
+    <string name="internet_unavailable">The Internet connection isn\'t available. Loading your previous timeline</string>
+    <string name="timeline_refresh_action_impossible">The Internet connection isn\'t available so the timeline can\'t be refreshed.</string>
+    <string name="compose_action_impossible">The Internet connection isn\'t available so you can\'t compose a new tweet at this time.</string>
+    
 </resources>

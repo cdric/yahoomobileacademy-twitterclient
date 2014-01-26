@@ -3,6 +3,10 @@ package com.yahoo.mobileacademy.twitterclient.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import com.yahoo.mobileacademy.twitterclient.adapters.TweetsAdapter;
 import com.yahoo.mobileacademy.twitterclient.models.Tweet;
 
@@ -13,6 +17,21 @@ import com.yahoo.mobileacademy.twitterclient.models.Tweet;
  *
  */
 public class UtilityClass {
+	
+
+	/**
+	 * Check if the internet conneciton is available
+	 * @return Returns TRUE if internet is available, FALSE otherwise
+	 */
+	public static boolean isNetworkConnected(Context context) {
+		ConnectivityManager CManager =
+        (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo NInfo = CManager.getActiveNetworkInfo();
+		if (NInfo != null && NInfo.isConnectedOrConnecting()) {
+			return true;
+		}
+		return false;
+	}
 	
 	/**
 	 * Extract the list of tweets from a TweetsAdapter

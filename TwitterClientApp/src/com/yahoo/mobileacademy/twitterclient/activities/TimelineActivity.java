@@ -31,7 +31,6 @@ import com.yahoo.mobileacademy.twitterclient.models.User;
 public class TimelineActivity extends Activity {
 
 	ListView lvTweets;
-	int since_id; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,14 @@ public class TimelineActivity extends Activity {
 		setContentView(R.layout.activity_timeline); 
 		
 		setUpView();
-		loadTimelineFromLocalDb();
-		loadTimelineFromInternet();
+		
+		// Check if the internet connection is up
+		if (!UtilityClass.isNetworkConnected(getBaseContext())) {
+		   Toast.makeText(getBaseContext(), R.string.internet_unavailable, Toast.LENGTH_SHORT).show();
+		   loadTimelineFromLocalDb();		   
+		} else {
+		   loadTimelineFromInternet();
+		}
 		
 	}
 
@@ -132,7 +137,7 @@ public class TimelineActivity extends Activity {
 		}
 		
 		if (saveToDb) {
-			// Persist last 25 tweets
+			// Persist last n tweets
 			updateLocalDBWithLatestTweets(TwitterAppConstants.NB_TWEET_TO_DISPLAY);
 		}
 		
@@ -190,10 +195,10 @@ public class TimelineActivity extends Activity {
 							@Override
 							public void onLoadMore(int page, int totalItemsCount) {
 								
-								List<Tweet> tweets = getTweetsFromListAdapter();
-								
+								List<Tweet> tweets = getTweetsFromListAdapter();								
 								refreshTimeline(TwitterAPIHelper
-										.computeMaxIdFromTweets(tweets), -1); 
+										.computeMaxIdFromTweets(tweets), -1);
+								
 							}
 							
 						});
@@ -228,17 +233,26 @@ public class TimelineActivity extends Activity {
 	 */
 	public void onRefreshAction(MenuItem mi) {
 		
-		Toast.makeText(getBaseContext(), "Refreshng timeline...",
-				Toast.LENGTH_SHORT).show();
+		if (!UtilityClass.isNetworkConnected(getBaseContext())) {
+			
+			Toast.makeText(getBaseContext(), R.string.timeline_refresh_action_impossible,
+					Toast.LENGTH_SHORT).show();
+			
+		} else {
 		
-		// If the adapter is already setup for this view
-		// Let's clear it before refreshing the view
-		if (lvTweets.getAdapter() != null) {
-			TweetsAdapter adapter = (TweetsAdapter) lvTweets.getAdapter();
-			adapter.clear();
+			Toast.makeText(getBaseContext(), R.string.timeline_refresh,
+					Toast.LENGTH_SHORT).show();
+			
+			// If the adapter is already setup for this view
+			// Let's clear it before refreshing the view
+			if (lvTweets.getAdapter() != null) {
+				TweetsAdapter adapter = (TweetsAdapter) lvTweets.getAdapter();
+				adapter.clear();
+			}
+			
+			loadTimelineFromInternet();
+			
 		}
-		
-		loadTimelineFromInternet();
 
 	}
 
@@ -247,9 +261,18 @@ public class TimelineActivity extends Activity {
 	 * @param mi the MenuItem
 	 */
 	public void onComposeAction(MenuItem mi) {
+		
+		if (!UtilityClass.isNetworkConnected(getBaseContext())) {
+			
+			Toast.makeText(getBaseContext(), R.string.compose_action_impossible,
+					Toast.LENGTH_SHORT).show();
+			
+		} else {
 
-		Intent i = new Intent(getApplicationContext(), ComposeActivity.class);
-		startActivityForResult(i, TwitterAppConstants.REQUEST_COMPOSE_ACTIVITY);
+			Intent i = new Intent(getApplicationContext(), ComposeActivity.class);
+			startActivityForResult(i, TwitterAppConstants.REQUEST_COMPOSE_ACTIVITY);
+			
+		}
 
 	}
 	
