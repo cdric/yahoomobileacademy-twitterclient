@@ -17,6 +17,9 @@ public class TwitterAppConstants {
    // Nb of tweets to store on local DB
    public static final int NB_TWEET_TO_STORE_ON_LOCAL_DB = 25;
    
+   // Key for the Intent Extra parameter to store the Twitter User Id
+   public static final String INTENT_EXTRA_PAREM_TWITTER_USER_ID = "user_id";
+   
    
 }
 

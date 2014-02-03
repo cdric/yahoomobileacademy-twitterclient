@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_action_refresh"
         android:orderInCategory="100"
         android:onClick="onRefreshAction"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_refresh"/>
     
     <item
@@ -13,7 +13,15 @@
         android:icon="@drawable/ic_action_compose"
         android:orderInCategory="200"
         android:onClick="onComposeAction"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_compose"/>
+    
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_action_profile"
+        android:orderInCategory="300"
+        android:onClick="onProfileAction"
+        android:showAsAction="always"
+        android:title="@string/action_profile"/>
 
 </menu>

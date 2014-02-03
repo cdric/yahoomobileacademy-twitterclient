@@ -60,7 +60,7 @@ public class ComposeActivity extends Activity {
 				Log.e("ERROR", e.toString());
 			}
 
-		});
+		}, null);
 		
 		// Register textChangesListener on the etTweet EditText View
 		// To update the current word count

@@ -23,6 +23,9 @@ public class User extends Model implements Serializable  {
 	@Column(name = "screenName")
 	private String screenName;
 	
+	@Column(name = "profileDescription")
+	private String profileDescription;
+	
 	@Column(name = "profileBgImageUrl")
 	private String profileBgImageUrl;
 	
@@ -57,6 +60,10 @@ public class User extends Model implements Serializable  {
 	public String getProfileImageUrl() {
 		return profileImageUrl;
 	}
+	
+	public String getProfileDescription() {
+		return profileDescription;
+	}
 
 	public int getNumTweets() {
 		return numTweets;
@@ -76,6 +83,7 @@ public class User extends Model implements Serializable  {
 			u.name = json.getString("name");
 			u.uid = json.getLong("id");
 			u.screenName = json.getString("screen_name");
+			u.profileDescription = json.getString("description");
 			u.profileBgImageUrl = json
 					.getString("profile_background_image_url");
 			u.profileImageUrl = json.getString("profile_image_url");

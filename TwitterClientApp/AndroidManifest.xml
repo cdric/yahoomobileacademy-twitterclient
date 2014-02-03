@@ -8,14 +8,14 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
-    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+
     <application
         android:name="com.yahoo.mobileacademy.twitterclient.apps.MyTwitterApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_twitter"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
@@ -51,6 +51,14 @@
         <activity
             android:name="com.yahoo.mobileacademy.twitterclient.activities.ComposeActivity"
             android:label="@string/title_activity_compose" >
+        </activity>
+        <activity
+            android:name="com.yahoo.mobileacademy.twitterclient.activities.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName="android.support.v4.app.FragmentActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.support.v4.app.FragmentActivity" />
         </activity>
     </application>
 
